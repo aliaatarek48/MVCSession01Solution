@@ -8,8 +8,20 @@ namespace MVCSession01
         {
             var builder = WebApplication.CreateBuilder(args);
 
-            // Add services to the container.
+            // Registers services required for MVC applications with Controllers and Views
             builder.Services.AddControllersWithViews();
+
+            // Registers services for API controllers (without View support)
+            builder.Services.AddControllers();
+
+            // Registers the full MVC framework (Controllers, Views, Razor Pages, and more)
+            builder.Services.AddMvc();
+
+            // Registers the core MVC services only (minimal MVC features; no Views or Razor Pages by default)
+            builder.Services.AddMvcCore();
+
+            // Registers services for Razor Pages applications
+            builder.Services.AddRazorPages();
 
             var app = builder.Build();
 
